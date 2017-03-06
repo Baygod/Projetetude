@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\leoma_000\Desktop\Projetetude\app\libs\guavalib.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4dad6eb644b525f4222e3c55d31c16660bacb92e">
+        <dex dex="C:\Users\leoma_000\Desktop\Projetetude\app\build\intermediates\transforms\dex\debug\folders\1000\2\guavalib_be31228cf590172eea6be20e3e94c3cfce133f8c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\leoma_000\Desktop\Projetetude\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="495e36a8f141a564dc6a402101d3446499f4ec2d">
+        <dex dex="C:\Users\leoma_000\Desktop\Projetetude\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f745239935ccfa277cfa17132afa9d5be379172e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\leoma_000\Desktop\Projetetude\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\leoma_000\Desktop\Projetetude\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_41dc97896744aca5520269f94c610f0237ec0426\classes.dex" />
+    </item>
+
+</items>
