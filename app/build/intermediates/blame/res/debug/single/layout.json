@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tag_text.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\tag_text.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_choix.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\activity_choix.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_organisation.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\activity_organisation.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ramassage.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\activity_ramassage.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tag_viewer.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\tag_viewer.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\tag_divider.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\tag_divider.xml"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coffre.xml",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\layout\\coffre.xml"
+    }
+]

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lego Warehouse</string>
+    <string name="error">Error</string>
+    <string name="intro_message">Salut</string>
+    <string name="menu_copy_dec">Dec</string>
+    <string name="menu_copy_hex">Hex</string>
+    <string name="menu_copy_reversed_dec">Reversed dec</string>
+    <string name="menu_copy_reversed_hex">Reversed hex</string>
+    <string name="menu_main_clear_title">Clear all</string>
+    <string name="menu_main_copy">Copy IDs</string>
+    <string name="nfc_disabled">NFC is not enabled. Please go to the wireless settings to enable it.</string>
+    <string name="no_nfc">No NFC found on this device</string>
+    <string name="nothing_scanned">Nothing scanned yet</string>
+    <style name="Legowarehouse" parent="android:Theme.Material.Light">
+        <item name="android:colorPrimary">@android:color/holo_red_dark</item>
+        <item name="android:colorPrimaryDark">@android:color/holo_red_dark</item>
+        <item name="android:navigationBarColor">@android:color/holo_red_dark</item>
+        <item name="android:colorForeground">@android:color/background_dark</item>
+        <item name="android:colorBackground">@android:color/background_light</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorPrimaryInverse">@android:color/black</item>
+        <item name="android:windowBackground">@android:color/white</item>
+    </style>
+</resources>

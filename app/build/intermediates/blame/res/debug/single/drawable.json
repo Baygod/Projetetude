@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\droite.jpg",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\droite.jpg"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\attente.png",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\attente.png"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\images.png",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\images.png"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\stop.png",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\stop.png"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\avancer.png",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\avancer.png"
+    },
+    {
+        "merged": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\gauche.png",
+        "source": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\drawable\\gauche.png"
+    }
+]

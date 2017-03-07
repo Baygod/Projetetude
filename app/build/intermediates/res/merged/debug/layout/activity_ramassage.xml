@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ramassage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.leo.projetetude.Ramassage">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Instructions pour aller chercher l'item suivant :"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/textebase"
+        android:textSize="18sp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/texte"
+        android:textStyle="normal|bold"
+        android:textSize="24sp"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textebase"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/image"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/etape"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/texte"
+        android:layout_marginBottom="20dp"
+        android:text="Etape suivante"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liste des items présents dans le coffre :"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/etape"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/textebase2"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/textebase2">
+    </ListView>
+
+</RelativeLayout>

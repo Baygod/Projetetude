@@ -1,0 +1,28 @@
+[
+    {
+        "outputFile": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 10,
+                    "endColumn": 12,
+                    "endOffset": 711
+                },
+                "from": {
+                    "file": "C:\\Users\\leoma_000\\Desktop\\Projetetude\\app\\src\\main\\res\\values-v21\\styles.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endLine": 11,
+                        "endColumn": 12,
+                        "endOffset": 724
+                    }
+                }
+            }
+        ]
+    }
+]
