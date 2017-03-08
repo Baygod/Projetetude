@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_choix"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.leo.projetetude.Pasdenfc">
+
+    <TextView
+        android:id="@+id/erreur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="158dp"
+        android:text="Ce smartphone ne possède pas de NFC vous ne pouvez donc pas utiliser l'application"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/quitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/erreur"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="92dp"
+        android:text="Quitter"
+        android:textSize="18sp" />
+
+</RelativeLayout>
