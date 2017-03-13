@@ -22,6 +22,7 @@ public class Organisation extends Activity {
                 Intent intent2 = new Intent(Organisation.this, TagViewer.class);
 
                 startActivity(intent2);
+                finish();
             }
 
         });

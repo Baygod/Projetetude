@@ -1,7 +1,6 @@
 package com.leo.projetetude;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -13,7 +12,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import static com.leo.projetetude.R.drawable.attente;
+import static com.leo.projetetude.R.drawable.reculer;
 
 
 public class Ramassage extends Activity {
@@ -22,7 +22,11 @@ public class Ramassage extends Activity {
     ImageView img = null;
     Button btn = null;
     String operation = "Attente";
-    int etat = 0;
+    String etat = "depart";
+    int Position_item = 0;
+    int Position = 0;
+    int click;
+    boolean dernier = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +36,29 @@ public class Ramassage extends Activity {
         txt = (TextView) findViewById(R.id.texte);
         img = (ImageView) findViewById(R.id.image);
         btn = (Button)findViewById(R.id.etape);
-        btn.setOnClickListener(handler);
+        final List<String> contenu = new ArrayList<String>();
 
-        List<String> contenu = new ArrayList<String>();
+        Position_item = 1;
+        dernier = true;
 
-
-
-
-        if(etat == 0) {
-
-            affichage(operation);
-            affichage_liste(contenu);
-            etat = 1;
-            operation = "Stop";
-        }
-        else if(etat == 1)
+        if(Position_item != 0)
         {
-
-
-                affichage(operation);
+            affichage("Avancer");
+            affichage_liste(contenu);
+            Position = 1;
+            if(Position_item == 1)
+            {
+                item_pos_1(contenu);
+            }
+            else if(Position_item == 2)
+            {
+                affichage("Droite");
+                Position = 5;
+                affichage("Prendre l'item");
+                contenu.add("Item 1");
                 affichage_liste(contenu);
+            }
         }
-
-
-
     }
 
 
@@ -78,28 +81,58 @@ public class Ramassage extends Activity {
         {
             img.setImageResource(R.drawable.gauche);
         }
-        else if(op == "Attente")
+        else if(op == "Prendre l'item")
         {
-            img.setImageResource(R.drawable.attente);
+            img.setImageResource(attente);
+        }
+        else if(op == "Reculer")
+        {
+            img.setImageResource(reculer);
         }
     }
 
     protected void affichage_liste(List<String> contenu){
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contenu);
-
         liste.setAdapter(adapter);
     }
 
-    View.OnClickListener handler = new View.OnClickListener() {
-        public void onClick(View v) {
-            etat=etat+1;
+    protected void item_pos_1(final List<String> c)
+    {
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View button) {
+                affichage("Gauche");
+                btn.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View button) {
+                        Position = 4;
+                        affichage("Prendre l'item");
+                        c.add("Item 1");
+                        affichage_liste(c);
+                        btn.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View button) {
+                                affichage("Reculer");
+                                btn.setOnClickListener(new View.OnClickListener() {
+                                    public void onClick(View button) {
+                                        Position = 1;
+                                        if(dernier == true)
+                                        {
+                                            affichage("Droite");
+                                            btn.setOnClickListener(new View.OnClickListener() {
+                                                public void onClick(View button) {
+                                                    Position = 0;
+                                                    affichage("Stop");
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
 
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
 
-        }
-    };
+
 }

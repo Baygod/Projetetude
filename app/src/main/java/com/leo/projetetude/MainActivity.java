@@ -22,6 +22,7 @@ public class MainActivity extends Activity { // sans oublier l'implémentation d
                 Intent intent1 = new Intent(MainActivity.this, Organisation.class);
 
                 startActivity(intent1);
+                finish();
             }
 
         });

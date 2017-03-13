@@ -39,6 +39,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,7 +53,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
 
 
 /**
@@ -69,7 +69,25 @@ public class TagViewer extends Activity {
 
     private AlertDialog mDialog;
 
+    private int Zone = 0;
+
+
+    private String actuel = "";
+    private String prec = "";
+    private String[] listepre = new String[100];
+    private String[] liste1= new String[5];
+    private String[] liste2= new String[5];
+    private String[] liste3= new String[5];
+    private String[] liste4= new String[5];
+    private String[] liste5= new String[5];
+    private String[] liste6= new String[5];
+    private int Nombretag = 0;
+
+    private List<byte[]> existe = new ArrayList<byte[]>();
+
     private List<Tag> mTags = new ArrayList<Tag>();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,12 +95,37 @@ public class TagViewer extends Activity {
         setContentView(R.layout.tag_viewer);
         mTagContent = (LinearLayout) findViewById(R.id.list);
         resolveIntent(getIntent());
+        Zone = 1;
+        prec = "";
+        for(int i = 0;i<100;i++)
+        {
+            listepre[i] = "Pas d'item";
+        }
+        liste1[0] = "Zone 1";
+        liste2[0] = "Zone 2";
+        liste3[0] = "Zone 3";
+        liste4[0] = "Zone 4";
+        liste5[0] = "Zone 5";
+        liste6[0] = "Zone 6";
+        for(int i=1;i<5;i++)
+        {
+            liste1[i] = "Pas d'item";
 
+            liste2[i] = "Pas d'item";
+            liste3[i] = "Pas d'item";
+            liste4[i] = "Pas d'item";
+            liste5[i] = "Pas d'item";
+            liste6[i] = "Pas d'item";
+        }
+        Nombretag = 0;
         mDialog = new AlertDialog.Builder(this).setNeutralButton("Ok", null).create();
 
         mAdapter = NfcAdapter.getDefaultAdapter(this);
         if (mAdapter == null) {
-            showMessage(R.string.error, R.string.no_nfc);
+            //showMessage(R.string.error, R.string.no_nfc);
+            Intent intent2 = new Intent(TagViewer.this, Pasdenfc.class);
+
+            startActivity(intent2);
             finish();
             return;
         }
@@ -91,6 +134,65 @@ public class TagViewer extends Activity {
                 new Intent(this, getClass()).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
         mNdefPushMessage = new NdefMessage(new NdefRecord[] { newTextRecord(
                 "Message from NFC Reader :-)", Locale.ENGLISH, true) });
+
+
+        Button button = (Button) findViewById(R.id.fin_lecture);
+
+        button.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View button) {
+
+                Intent intent2 = new Intent(TagViewer.this, Choix.class);
+                intent2.putExtra("Zone 1",liste1);
+
+                intent2.putExtra("Zone 2",liste2);
+                intent2.putExtra("Zone 3",liste3);
+                intent2.putExtra("Zone 4",liste4);
+                intent2.putExtra("Zone 5",liste5);
+                intent2.putExtra("Zone 6",liste6);
+
+                startActivity(intent2);
+                finish();
+            }
+
+        });
+
+        final Button zone_suiv = (Button) findViewById(R.id.zone);
+
+        zone_suiv.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View button) {
+                if(Zone < 6)
+                {
+                    Nombretag = 0;
+                    prec = "";
+                    remplirliste();
+                    for(int i = 0;i<100;i++)
+                    {
+                        listepre[i] = "Pas d'item";
+                    }
+
+                    Zone += 1;
+                    zone_suiv.setText("Zone " + Integer.toString(Zone));
+                    clearTags();
+
+                }
+                else if(Zone == 6)
+                {
+                    Nombretag = 0;
+                    prec = "";
+                    remplirliste();
+                    for(int i = 0;i<100;i++)
+                    {
+                        listepre[i] = "";
+                    }
+                    clearTags();
+                }
+
+            }
+
+        });
+
     }
 
     private void showMessage(int title, int message) {
@@ -110,8 +212,11 @@ public class TagViewer extends Activity {
 
         byte[] data = new byte[1 + langBytes.length + textBytes.length];
         data[0] = (byte) status;
+
         System.arraycopy(langBytes, 0, data, 1, langBytes.length);
         System.arraycopy(textBytes, 0, data, 1 + langBytes.length, textBytes.length);
+
+
 
         return new NdefRecord(NdefRecord.TNF_WELL_KNOWN, NdefRecord.RTD_TEXT, new byte[0], data);
     }
@@ -179,6 +284,8 @@ public class TagViewer extends Activity {
                 mTags.add(tag);
             }
             // Setup the views
+
+
             buildTagViews(msgs);
         }
     }
@@ -271,6 +378,7 @@ public class TagViewer extends Activity {
         Parcel oParcel = Parcel.obtain();
         oTag.writeToParcel(oParcel, 0);
         oParcel.setDataPosition(0);
+
 
         int len = oParcel.readInt();
         byte[] id = null;
@@ -404,21 +512,67 @@ public class TagViewer extends Activity {
             if (msgs == null || msgs.length == 0) {
                 return;
             }
+
             LayoutInflater inflater = LayoutInflater.from(this);
             LinearLayout content = mTagContent;
-
             // Parse the first message in the list
             // Build views for all of the sub records
             Date now = new Date();
             List<ParsedNdefRecord> records = NdefMessageParser.parse(msgs[0]);
             final int size = records.size();
+            Boolean dejavu;
             for (int i = 0; i < size; i++) {
-                TextView timeView = new TextView(this);
-                timeView.setText(TIME_FORMAT.format(now));
-                content.addView(timeView, 0);
-                ParsedNdefRecord record = records.get(i);
-                content.addView(record.getView(this, inflater, content, i), 1 + i);
-                content.addView(inflater.inflate(R.layout.tag_divider, content, false), 2 + i);
+                dejavu = false;
+                actuel = msgs[i].toString().replaceAll(" ", "");
+                if(prec == null)
+                {
+                    TextView timeView = new TextView(this);
+                    timeView.setText(TIME_FORMAT.format(now) + msgs[i].toString() + "Precendent : " + prec);
+                    content.addView(timeView, 0);
+                    ParsedNdefRecord record = records.get(i);
+                    content.addView(record.getView(this, inflater, content, i), 1 + i);
+                    content.addView(inflater.inflate(R.layout.tag_divider, content, false), 2 + i);
+
+                    prec = actuel;
+                    listepre[0] = prec;
+                    Nombretag+=1;
+                }
+                else if(prec.equals(actuel))
+                {
+                    TextView timeView = new TextView(this);
+                    timeView.setText("C'est le même que le précédent" + Nombretag);
+                    content.addView(timeView, 0);
+                    content.addView(inflater.inflate(R.layout.tag_divider, content, false), 1 + i);
+                    dejavu = true;
+
+                }
+                else{
+                    for(int j=0;j<100;j++)
+                    {
+                        if(listepre[j].equals(actuel))
+                        {
+                            TextView timeView = new TextView(this);
+                            timeView.setText("Il existe déjà" + Nombretag);
+                            content.addView(timeView, 0);
+                            content.addView(inflater.inflate(R.layout.tag_divider, content, false), 1 + i);
+                            dejavu = true;
+                            prec = listepre[j];
+                        }
+                    }
+                    if(dejavu == false)
+                    {
+                        TextView timeView = new TextView(this);
+                        timeView.setText(TIME_FORMAT.format(now) + msgs[i].toString() + "Precendent : " + prec);
+                        content.addView(timeView, 0);
+                        ParsedNdefRecord record = records.get(i);
+                        content.addView(record.getView(this, inflater, content, i), 1 + i);
+                        content.addView(inflater.inflate(R.layout.tag_divider, content, false), 2 + i);
+                        prec = actuel;
+                        listepre[Nombretag] = prec;
+                        Nombretag+=1;
+                    }
+                }
+
             }
         }
 
@@ -459,7 +613,7 @@ public class TagViewer extends Activity {
 
     private void clearTags() {
         mTags.clear();
-        for (int i = mTagContent.getChildCount() -1; i >= 0 ; i--) {
+        for (int i = mTagContent.getChildCount() -3; i >= 0 ; i--) {
             View view = mTagContent.getChildAt(i);
             if (view.getId() != R.id.tag_viewer_text) {
                 mTagContent.removeViewAt(i);
@@ -518,5 +672,53 @@ public class TagViewer extends Activity {
     public void onNewIntent(Intent intent) {
         setIntent(intent);
         resolveIntent(intent);
+    }
+
+    private void remplirliste()
+    {
+        if(Zone == 1)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste1[i+1] = listepre[i];
+            }
+
+        }
+        else if(Zone == 2)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste2[i+1] = listepre[i];
+            }
+        }
+        else if(Zone == 3)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste3[i+1] = listepre[i];
+            }
+        }
+        else if(Zone == 4)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste4[i+1] = listepre[i];
+            }
+        }
+        else if(Zone == 5)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste5[i+1] = listepre[i];
+            }
+        }
+        else if(Zone == 6)
+        {
+            for(int i = 0;i<4;i++)
+            {
+                liste6[i+1] = listepre[i];
+            }
+        }
+
     }
 }

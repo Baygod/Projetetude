@@ -26,10 +26,29 @@
         <TextView
             android:id="@+id/tag_viewer_text"
             android:layout_width="fill_parent"
+            android:textAlignment="center"
             android:layout_height="wrap_content"
             android:padding="6dp"
+            android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:autoLink="email|web"
-            android:text="@string/intro_message" />
+            android:text="Vous êtes désormais dans l'étape de lecture, commencez par lire tous les tags de la zone 1 puis appuyez sur le bouton pour passer à la zone suivante" />
+
+        <Button
+            android:id="@+id/zone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:text="Zone 1" />
+
+        <Button
+            android:id="@+id/fin_lecture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:text="Fin de la lecture" />
+
     </LinearLayout>
 </ScrollView>
